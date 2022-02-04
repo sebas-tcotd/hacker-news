@@ -1,0 +1,19 @@
+:root {
+  --gray: #606060;
+  --gray-dark: #343434;
+  --gray-light: #d9d9d9;
+  --alabaster: #fcfcfc;
+  --gallery: #ececec;
+  --white: #ffffff;
+  --dodger-blue: #1797ff;
+
+  --primary-color: var(--dodger-blue);
+
+  --background-color: var(--alabaster);
+  --background-gradient: linear-gradient(var(--gallery), var(--white));
+
+  --text-color: var(--gray-dark);
+  --text-muted-color: var(--gray);
+
+  --border-color: var(--gray);
+}
