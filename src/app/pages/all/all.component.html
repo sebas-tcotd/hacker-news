@@ -1,6 +1,45 @@
 <main class="container main mx-auto">
-  <app-headline></app-headline>
-  <app-headline></app-headline>
-  <app-headline></app-headline>
-  <app-headline></app-headline>
+  <div class="categories">
+    <input
+      type="checkbox"
+      id="categories__checkbox"
+      class="categories__checkbox"
+      #categories
+    />
+    <label for="categories__checkbox">
+      <div class="categories__select-button">
+        <p>Select your news</p>
+        <span class="material-icons"> expand_more </span>
+      </div>
+    </label>
+
+    <ul class="categories__list">
+      <li class="categories__options" (click)="searchByFramework('angular')">
+        <img
+          src="../../assets/images/angular-logo.svg"
+          alt="Angular logo"
+          class="categories__option-img"
+        />
+        <p>Angular</p>
+      </li>
+      <li class="categories__options" (click)="searchByFramework('reactjs')">
+        <img
+          src="../../assets/images/react-logo.svg"
+          alt="React logo"
+          class="categories__option-img"
+        />
+        <p>React</p>
+      </li>
+      <li class="categories__options" (click)="searchByFramework('vuejs')">
+        <img
+          src="../../assets/images/vue-logo.svg"
+          alt="VueJS logo"
+          class="categories__option-img"
+        />
+        <p>VueJS</p>
+      </li>
+    </ul>
+  </div>
+
+  <app-headline *ngFor="let post of posts" [post]="post"></app-headline>
 </main>
