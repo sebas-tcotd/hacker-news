@@ -3,4 +3,56 @@
   <button class="tabs__button tabs__favs-option">My faves</button>
 </div>
 
+<!-- <div class="container mx-auto">
+  <select name="categories" id="" class="categories" title="Categories">
+    <option value="" disabled selected>Select your news</option>
+    <option value="">Angular</option>
+    <option value="">React</option>
+    <option value="">VueJS</option>
+  </select>
+</div> -->
+<div class="container mx-auto">
+  <div class="categories">
+    <input
+      type="checkbox"
+      name=""
+      id="categories__checkbox"
+      class="categories__checkbox"
+    />
+    <label for="categories__checkbox">
+      <div class="categories__select-button">
+        <p>Select your news</p>
+        <span class="material-icons"> expand_more </span>
+      </div>
+    </label>
+
+    <ul class="categories__list">
+      <li class="categories__options">
+        <img
+          src="../../assets/images/angular-logo.svg"
+          alt="Angular logo"
+          class="categories__option-img"
+        />
+        <p>Angular</p>
+      </li>
+      <li class="categories__options">
+        <img
+          src="../../assets/images/react-logo.svg"
+          alt="React logo"
+          class="categories__option-img"
+        />
+        <p>React</p>
+      </li>
+      <li class="categories__options">
+        <img
+          src="../../assets/images/vue-logo.svg"
+          alt="VueJS logo"
+          class="categories__option-img"
+        />
+        <p>VueJS</p>
+      </li>
+    </ul>
+  </div>
+</div>
+
 <router-outlet></router-outlet>

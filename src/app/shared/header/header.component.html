@@ -1,7 +1,35 @@
 <header class="header">
   <button class="button">
-    <span class="material-icons"> menu </span>
+    <label for="sidebar-check" class="header__menu-button">
+      <span class="material-icons"> menu </span>
+    </label>
   </button>
+
+  <!-- SIDEBAR -->
+
+  <input type="checkbox" name="" id="sidebar-check" />
+  <nav class="sidebar">
+    <div class="sidebar__title">
+      <h3>Select your news</h3>
+      <button href="#" class="button sidebar__close-icon">
+        <label for="sidebar-check">
+          <span class="material-icons"> close </span>
+        </label>
+      </button>
+    </div>
+    <ul class="sidebar__items">
+      <li class="sidebar__item">
+        <a href="#">Angular</a>
+      </li>
+      <li class="sidebar__item">
+        <a href="#">React</a>
+      </li>
+      <li class="sidebar__item">
+        <a href="#">VueJS</a>
+      </li>
+    </ul>
+  </nav>
+
   <h1 class="logo">Hacker News</h1>
   <div class="button"></div>
 </header>
