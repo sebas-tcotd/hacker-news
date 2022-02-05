@@ -1,3 +1,185 @@
-/* You can add global styles to this file, and also import other style files */
-@import url('./assets/styles/settings/colors.css');
-@import url('./assets/styles/settings/typography.css');
+/* Settings */
+@import url("./assets/styles/settings/layout.css");
+@import url("./assets/styles/settings/z-index.css");
+
+/* Generic */
+@import url("./assets/styles/generic/reset.css");
+@import url("./assets/styles/generic/box-sizing.css");
+
+/* --- */
+@import url("https://fonts.googleapis.com/css2?family=Baskervville&family=Roboto:wght@400;500&display=swap");
+
+:root {
+  --alizarin-crimson: #df2a26;
+  --boulder: #767676;
+  --gray: #606060;
+  --gray-light: #d9d9d9;
+  --gray-dark: #343434;
+  --dusty-gray: #979797;
+  --mine-shaft: #3b3b3b;
+  --alabaster: #fcfcfc;
+  --gallery: #ececec;
+  --white: #ffffff;
+  --dodger-blue: #1797ff;
+
+  --primary-color: var(--dodger-blue);
+
+  --background-color: var(--alabaster);
+  --background-gradient: linear-gradient(
+    180deg,
+    var(--gallery) 0%,
+    var(--white) 100%
+  );
+
+  --text-color: var(--gray-dark);
+  --text-muted-color: var(--gray);
+
+  --border-color: var(--dusty-gray);
+  --border-active-color: var(--dodger-blue);
+
+  /* TYPOGRAPHY */
+  /* Typography scale */
+  --fs-base: 16;
+
+  --fs-8: calc(8 / var(--fs-base) rem);
+  --fs-11: calc(11rem / var(--fs-base));
+  --fs-14: calc(14 / var(--fs-base) rem);
+  --fs-16: calc(16rem / var(--fs-base));
+  --fs-28: 28rem / var(--fs-base);
+}
+
+/* GENERAL */
+html, body {
+  height: 100%;
+}
+body {
+  background-color: var(--alabaster);
+}
+
+.container {
+  width: 98%;
+}
+@media (min-width: 768px) {
+  .container {
+    max-width: 768px;
+  }
+}
+
+.mx-auto {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* BLOCKS */
+/* -- Header -- */
+.header {
+  align-items: center;
+  background: var(--background-gradient);
+  box-shadow: 0 1px 4px 0 rgba(0, 21, 41, 0.12);
+  display: flex;
+}
+@media (min-width: 768px) {
+  .header {
+    height: 5.125rem;
+  }
+}
+@media (min-width: 1024px) {
+  .header {
+    height: 7.125rem;
+  }
+}
+
+/* -- Logo -- */
+.logo {
+  flex: 1 1 auto;
+  font-size: 1.25rem;
+  font-family: "Baskervville", serif;
+  color: var(--mine-shaft);
+  text-align: center;
+  text-transform: uppercase;
+}
+@media (min-width: 768px) {
+  .logo {
+    font-size: calc(28rem / var(--fs-base));
+  }
+}
+
+/* -- Button -- */
+.button {
+  background: none;
+  border: none;
+  color: var(--mine-shaft);
+  width: 4rem;
+  height: 4rem;
+}
+@media (min-width: 768px) {
+  /* TODO: refactorizar cuando se tenga el botón de favoritos */
+  .button {
+    display: none;
+  }
+}
+
+/* -- Container for the headlines -- */
+.main {
+  display: flex;
+  flex-direction: column;
+}
+
+/* -- Headline -- */
+.headline {
+  align-items: stretch;
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  color: var(--gray);
+  display: flex;
+  justify-content: space-between;
+  font-family: "Roboto", sans-serif;
+  margin: 0.25rem auto;
+  height: 100%;
+}
+.headline__info {
+  padding: 0.75rem 0.75rem;
+}
+.headline__metadata {
+  align-items: center;
+  display: flex;
+  font-size: var(--fs-11);
+  margin-bottom: 0.5rem;
+}
+.headline__time-icon {
+  font-size: 16px;
+  margin-right: 0.5rem;
+}
+.headline__about {
+  color: var(--boulder);
+  display: flex;
+  flex-direction: column;
+}
+.headline__title {
+  font-size: var(--fs-16);
+  font-weight: 500;
+}
+.headline__favorite {
+  border-radius: 0 6px 6px 0;
+  border: none;
+  background-color: #f5f5f5;
+  color: var(--alizarin-crimson);
+  width: 6rem;
+  text-align: center;
+}
+@media (min-width: 768px) {
+  .headline {
+    /* padding: 1rem 1.625rem; */
+    flex-direction: row;
+    margin-bottom: 1.875rem;
+  }
+  .headline__info {
+    padding: 1rem;
+  }
+  .headline__about {
+    flex-direction: row;
+  }
+  .headline__favorite {
+    width: 4.25rem;
+  }
+}

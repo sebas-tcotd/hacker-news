@@ -16,4 +16,5 @@
   --text-muted-color: var(--gray);
 
   --border-color: var(--gray);
+  --border-active-color: var(--dodger-blue);
 }

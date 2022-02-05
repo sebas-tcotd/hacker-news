@@ -1,0 +1,12 @@
+@import url("../settings/typography.css");
+
+h1,
+h2,
+h3 {
+  font-weight: 300;
+  line-height: 1.13;
+}
+
+h1 {
+  font-size: calc(var(--fs-28))px;
+}
