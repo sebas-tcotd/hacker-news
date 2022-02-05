@@ -27,9 +27,17 @@
 }
 .sidebar__item {
   padding: 1rem 0;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid var(--gray-light);
 }
 .sidebar__item a {
   text-decoration: none;
+}
+.sidebar__item-logo {
+  width: 25px;
+  height: 25px;
+  margin-right: .75rem;
 }
 #sidebar-check {
   display: none;

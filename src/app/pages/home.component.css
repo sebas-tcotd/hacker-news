@@ -25,13 +25,16 @@
 }
 .categories__checkbox:checked ~ .categories__list {
   display: block;
+  position: absolute;
+  width: 15rem;
+  z-index: 100;
 }
 .categories__checkbox:checked ~ label .categories__select-button {
   border: 1px solid #2e2e2e;
 }
 .categories__list {
   display: none;
-  width: 100%;
+  background-color: var(--alabaster);
   border-radius: 4px;
   overflow: hidden;
   box-shadow: 0 2px 2px 0 #dad8d8;
