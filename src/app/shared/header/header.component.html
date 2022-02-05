@@ -18,7 +18,7 @@
       </button>
     </div>
     <ul class="sidebar__items">
-      <li class="sidebar__item">
+      <li class="sidebar__item" (click)="searchByFramework('angular')">
         <img
           src="../../../assets/images/angular-logo.svg"
           alt="Angular logo"
@@ -26,7 +26,7 @@
         />
         <a>Angular</a>
       </li>
-      <li class="sidebar__item">
+      <li class="sidebar__item" (click)="searchByFramework('reactjs')">
         <img
           src="../../../assets/images/react-logo.svg"
           alt="React logo"
@@ -34,7 +34,7 @@
         />
         <a>React</a>
       </li>
-      <li class="sidebar__item">
+      <li class="sidebar__item" (click)="searchByFramework('vuejs')">
         <img
           src="../../../assets/images/vue-logo.svg"
           alt="VueJS logo"

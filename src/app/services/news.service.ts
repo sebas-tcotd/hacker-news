@@ -11,8 +11,15 @@ import { Post } from '../models/post.model';
 })
 export class NewsService {
   private url: string = environment.newsURLBase;
+  private frameworkWord = new Subject<string>();
 
   constructor(private http: HttpClient) {}
+
+  search$ = this.frameworkWord.asObservable();
+
+  setSearch(keyword: string): void {
+    this.frameworkWord.next(keyword);
+  }
 
   /**
    * Recover all the news about the frameworks Angular, React and Vue.

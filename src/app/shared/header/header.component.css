@@ -30,6 +30,7 @@
   display: flex;
   align-items: center;
   border-bottom: 1px solid var(--gray-light);
+  cursor: pointer;
 }
 .sidebar__item a {
   text-decoration: none;
