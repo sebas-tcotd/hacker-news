@@ -1,5 +1,6 @@
 import { Component, ElementRef, Input, OnInit } from '@angular/core';
 import { Post } from 'src/app/models/post.model';
+import { HeadlineService } from 'src/app/services/headline.service';
 
 @Component({
   selector: 'app-headline',
@@ -9,12 +10,15 @@ import { Post } from 'src/app/models/post.model';
 export class HeadlineComponent implements OnInit {
   @Input() post!: Post;
 
-  constructor() {}
+  constructor(private headlineService: HeadlineService) {}
 
   ngOnInit(): void {}
 
   goToPost(url: string, id: number) {
-    document.getElementById(`${id}`)?.classList.add('headline--is-selected');
     window.open(url, '_blank');
+  }
+
+  savePost(post: Post) {
+    this.headlineService.savePost(post);
   }
 }

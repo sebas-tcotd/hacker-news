@@ -16,7 +16,12 @@
     </h3>
   </div>
 
-  <button class="headline__favorite">
-    <span class="material-icons"> favorite_border </span>
+  <button class="headline__favorite" (click)="savePost(post)">
+    <span class="material-icons" *ngIf="!post.is_favorite; else favorite">
+      favorite_border
+    </span>
+    <ng-template #favorite>
+      <span class="material-icons"> favorite </span>
+    </ng-template>
   </button>
 </div>

@@ -1,7 +1,7 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
-import { filter, map } from 'rxjs/operators';
+import { filter, map, tap } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
 import { NewsResponse } from '../models/news-response.interface';
 import { Post } from '../models/post.model';
@@ -12,6 +12,9 @@ import { Post } from '../models/post.model';
 export class NewsService {
   private url: string = environment.newsURLBase;
   private frameworkWord = new Subject<string>();
+  newsPage = 0;
+  favorites: Post[] =
+    JSON.parse(localStorage.getItem('saved-posts') as string) || [];
 
   constructor(private http: HttpClient) {}
 
@@ -47,8 +50,23 @@ export class NewsService {
               story_title: newsElement.story_title,
               story_url: newsElement.story_url!,
               story_id: newsElement.created_at_i,
+              is_favorite: false,
             }))
-        )
+        ),
+        tap((news) => {
+          this.favorites = JSON.parse(
+            localStorage.getItem('saved-posts') as string
+          );
+
+          news.forEach((singleNews) => {
+            const isTheNewSaved: boolean = this.favorites.some(
+              (favorite) => favorite.story_id === singleNews.story_id
+            );
+            if (isTheNewSaved) {
+              singleNews.is_favorite = true;
+            }
+          });
+        })
       );
   }
 }

@@ -4,4 +4,5 @@ export interface Post {
   story_url: string;
   created_at: string;
   story_id: number;
+  is_favorite?: boolean;
 }
