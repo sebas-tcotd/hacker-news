@@ -5,9 +5,10 @@ import { FavsComponent } from './favs/favs.component';
 import { HomeComponent } from './home.component';
 import { PagesRoutingModule } from './pages-routing.module';
 import { SharedModule } from '../shared/shared.module';
+import { DropdownComponent } from './all/components/dropdown/dropdown.component';
 
 @NgModule({
-  declarations: [AllComponent, FavsComponent, HomeComponent],
+  declarations: [AllComponent, FavsComponent, HomeComponent, DropdownComponent],
   imports: [CommonModule, PagesRoutingModule, SharedModule],
   exports: [HomeComponent],
 })

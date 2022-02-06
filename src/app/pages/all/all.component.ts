@@ -1,10 +1,4 @@
-import {
-  Component,
-  ElementRef,
-  OnDestroy,
-  OnInit,
-  ViewChild,
-} from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription, tap } from 'rxjs';
 import { Post } from 'src/app/models/post.model';
 import { NewsService } from 'src/app/services/news.service';
@@ -15,7 +9,6 @@ import { NewsService } from 'src/app/services/news.service';
   styleUrls: ['./all.component.css'],
 })
 export class AllComponent implements OnInit, OnDestroy {
-  @ViewChild('categories') categories!: ElementRef;
   posts!: Post[];
   frameworkWord: string = '';
   searchSubscription!: Subscription;
@@ -37,7 +30,5 @@ export class AllComponent implements OnInit, OnDestroy {
     this.newsService
       .getNews(framework)
       .subscribe((posts) => (this.posts = posts));
-
-    this.categories.nativeElement.checked = false;
   }
 }
