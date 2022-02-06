@@ -14,7 +14,7 @@
     </label>
 
     <ul class="categories__list" #list>
-      <li class="categories__options" (click)="setFilter('angular')">
+      <li class="categories__options" id="angular" (click)="setFilter('angular')">
         <img
           src="../../assets/images/angular-logo.svg"
           alt="Angular logo"
@@ -22,7 +22,7 @@
         />
         <p>Angular</p>
       </li>
-      <li class="categories__options" (click)="setFilter('reactjs')">
+      <li class="categories__options" id="reactjs" (click)="setFilter('reactjs')">
         <img
           src="../../assets/images/react-logo.svg"
           alt="React logo"
@@ -30,7 +30,7 @@
         />
         <p>React</p>
       </li>
-      <li class="categories__options" (click)="setFilter('vuejs')">
+      <li class="categories__options" id="vuejs" (click)="setFilter('vuejs')">
         <img
           src="../../assets/images/vue-logo.svg"
           alt="VueJS logo"
