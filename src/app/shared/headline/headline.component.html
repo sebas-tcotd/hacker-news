@@ -16,7 +16,7 @@
     </h3>
   </div>
 
-  <button class="headline__favorite" (click)="savePost(post)">
+  <button class="headline__favorite" (click)="toggleFavoriteStatus(post)">
     <span class="material-icons" *ngIf="!post.is_favorite; else favorite">
       favorite_border
     </span>

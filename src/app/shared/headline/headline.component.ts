@@ -18,7 +18,11 @@ export class HeadlineComponent implements OnInit {
     window.open(url, '_blank');
   }
 
-  savePost(post: Post) {
-    this.headlineService.savePost(post);
+  toggleFavoriteStatus(post: Post) {
+    if (!post.is_favorite) {
+      this.headlineService.saveAsFavorite(post);
+    } else {
+      this.headlineService.removeFavorite(post);
+    }
   }
 }

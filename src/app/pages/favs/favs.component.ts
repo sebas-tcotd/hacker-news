@@ -14,6 +14,5 @@ export class FavsComponent implements OnInit {
 
   ngOnInit(): void {
     this.posts = this.headlineService.getSavedPosts() || [];
-    console.log(this.posts);
   }
 }

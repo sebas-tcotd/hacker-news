@@ -58,14 +58,16 @@ export class NewsService {
             localStorage.getItem('saved-posts') as string
           );
 
-          news.forEach((singleNews) => {
-            const isTheNewSaved: boolean = this.favorites.some(
-              (favorite) => favorite.story_id === singleNews.story_id
-            );
-            if (isTheNewSaved) {
-              singleNews.is_favorite = true;
-            }
-          });
+          if (this.favorites) {
+            news.forEach((singleNews) => {
+              const isTheNewSaved: boolean = this.favorites.some(
+                (favorite) => favorite.story_id === singleNews.story_id
+              );
+              if (isTheNewSaved) {
+                singleNews.is_favorite = true;
+              }
+            });
+          }
         })
       );
   }
