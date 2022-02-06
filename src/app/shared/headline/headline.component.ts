@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, ElementRef, Input, OnInit } from '@angular/core';
 import { Post } from 'src/app/models/post.model';
 
 @Component({
@@ -12,4 +12,9 @@ export class HeadlineComponent implements OnInit {
   constructor() {}
 
   ngOnInit(): void {}
+
+  goToPost(url: string, id: number) {
+    document.getElementById(`${id}`)?.classList.add('headline--is-selected');
+    window.open(url, '_blank');
+  }
 }

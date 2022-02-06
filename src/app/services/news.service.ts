@@ -46,6 +46,7 @@ export class NewsService {
               author: newsElement.author,
               story_title: newsElement.story_title,
               story_url: newsElement.story_url!,
+              story_id: newsElement.created_at_i,
             }))
         )
       );

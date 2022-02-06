@@ -1,5 +1,5 @@
-<div class="headline">
-  <div class="headline__info">
+<div class="headline" [id]="post.story_id">
+  <div class="headline__info" (click)="goToPost(post.story_url, post.story_id)">
     <div class="headline__metadata">
       <span class="material-icons headline__time-icon"> schedule </span>
       <div class="headline__about">
