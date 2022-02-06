@@ -24,12 +24,7 @@ export class AllComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.searchSubscription = this.newsService.search$
-      .pipe(
-        tap((word) => {
-          console.log(word);
-          this.searchByFramework(word);
-        })
-      )
+      .pipe(tap((word) => this.searchByFramework(word)))
       .subscribe();
     this.newsService.getNews().subscribe((posts) => (this.posts = posts));
   }
