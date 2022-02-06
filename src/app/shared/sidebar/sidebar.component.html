@@ -1,0 +1,47 @@
+<!-- SIDEBAR -->
+
+<input type="checkbox" id="sidebar-check" #sidebarCheck />
+<nav class="sidebar" id="sidebar">
+  <div class="sidebar__title">
+    <h3>Select your news</h3>
+    <button href="#" class="button sidebar__close-icon">
+      <label for="sidebar-check">
+        <span class="material-icons"> close </span>
+      </label>
+    </button>
+  </div>
+  <ul class="sidebar__items" #options>
+    <li
+      class="sidebar__item"
+      id="sidebar-angular"
+      (click)="setFilter('angular')"
+    >
+      <img
+        src="../../../assets/images/angular-logo.svg"
+        alt="Angular logo"
+        class="sidebar__item-logo"
+      />
+      <a>Angular</a>
+    </li>
+    <li
+      class="sidebar__item"
+      id="sidebar-reactjs"
+      (click)="setFilter('reactjs')"
+    >
+      <img
+        src="../../../assets/images/react-logo.svg"
+        alt="React logo"
+        class="sidebar__item-logo"
+      />
+      <a>React</a>
+    </li>
+    <li class="sidebar__item" id="sidebar-vuejs" (click)="setFilter('vuejs')">
+      <img
+        src="../../../assets/images/vue-logo.svg"
+        alt="VueJS logo"
+        class="sidebar__item-logo"
+      />
+      <a>VueJS</a>
+    </li>
+  </ul>
+</nav>

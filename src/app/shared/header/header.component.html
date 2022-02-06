@@ -5,45 +5,7 @@
     </label>
   </button>
 
-  <!-- SIDEBAR -->
-
-  <input type="checkbox" id="sidebar-check" #sidebarCheck />
-  <nav class="sidebar" id="sidebar">
-    <div class="sidebar__title">
-      <h3>Select your news</h3>
-      <button href="#" class="button sidebar__close-icon">
-        <label for="sidebar-check">
-          <span class="material-icons"> close </span>
-        </label>
-      </button>
-    </div>
-    <ul class="sidebar__items">
-      <li class="sidebar__item" (click)="searchByFramework('angular')">
-        <img
-          src="../../../assets/images/angular-logo.svg"
-          alt="Angular logo"
-          class="sidebar__item-logo"
-        />
-        <a>Angular</a>
-      </li>
-      <li class="sidebar__item" (click)="searchByFramework('reactjs')">
-        <img
-          src="../../../assets/images/react-logo.svg"
-          alt="React logo"
-          class="sidebar__item-logo"
-        />
-        <a>React</a>
-      </li>
-      <li class="sidebar__item" (click)="searchByFramework('vuejs')">
-        <img
-          src="../../../assets/images/vue-logo.svg"
-          alt="VueJS logo"
-          class="sidebar__item-logo"
-        />
-        <a>VueJS</a>
-      </li>
-    </ul>
-  </nav>
+  <app-sidebar (frameworkWordEmitter)="searchByFramework($event)" ></app-sidebar>
 
   <h1 class="logo">Hacker News</h1>
   <div class="button"></div>
