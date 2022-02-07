@@ -1,6 +1,6 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, Subject } from 'rxjs';
+import { Observable, of, Subject } from 'rxjs';
 import { filter, map, tap } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
 import { NewsResponse } from '../models/news-response.interface';
@@ -11,17 +11,18 @@ import { Post } from '../models/post.model';
 })
 export class NewsService {
   private url: string = environment.newsURLBase;
-  private frameworkWord = new Subject<string>();
-  newsPage = 0;
+  private frameworkWordSource = new Subject<string>();
+  private newsPage = 0;
+  public isPageLoading: boolean = false;
   favorites: Post[] =
     JSON.parse(localStorage.getItem('saved-posts') as string) || [];
 
   constructor(private http: HttpClient) {}
 
-  search$ = this.frameworkWord.asObservable();
+  search$ = this.frameworkWordSource.asObservable();
 
   setSearch(keyword: string): void {
-    this.frameworkWord.next(keyword);
+    this.frameworkWordSource.next(keyword);
   }
 
   /**
@@ -30,7 +31,15 @@ export class NewsService {
    * @returns An array with all the news.
    */
   getNews(framework?: string): Observable<Post[]> {
-    const params = new HttpParams().set('query', `${framework}`).set('page', 0);
+    if (this.isPageLoading) {
+      return of([]);
+    }
+
+    this.isPageLoading = true;
+
+    const params = new HttpParams()
+      .set('query', `${framework}`)
+      .set('page', this.newsPage.toString());
 
     return this.http
       .get<NewsResponse>(`${this.url}/search_by_date`, { params })
@@ -54,6 +63,8 @@ export class NewsService {
             }))
         ),
         tap((news) => {
+          this.isPageLoading = false;
+          this.newsPage += 1;
           this.favorites = JSON.parse(
             localStorage.getItem('saved-posts') as string
           );
@@ -70,5 +81,9 @@ export class NewsService {
           }
         })
       );
+  }
+
+  resetNewsPage() {
+    this.newsPage = 0;
   }
 }

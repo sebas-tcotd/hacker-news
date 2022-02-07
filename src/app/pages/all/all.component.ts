@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, HostListener, OnDestroy, OnInit } from '@angular/core';
 import { Subscription, tap } from 'rxjs';
 import { Post } from 'src/app/models/post.model';
 import { NewsService } from 'src/app/services/news.service';
@@ -17,7 +17,11 @@ export class AllComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.searchSubscription = this.newsService.search$
-      .pipe(tap((word) => this.searchByFramework(word)))
+      .pipe(
+        tap((word) => {
+          this.frameworkWord = word;
+        })
+      )
       .subscribe();
     this.newsService.getNews().subscribe((posts) => (this.posts = posts));
   }
@@ -30,5 +34,21 @@ export class AllComponent implements OnInit, OnDestroy {
     this.newsService
       .getNews(framework)
       .subscribe((posts) => (this.posts = posts));
+  }
+
+  @HostListener('window: scroll')
+  onScroll() {
+    const threshold = 1500;
+    const currentPosition =
+      (document.documentElement.scrollTop || document.body.scrollTop) +
+      threshold;
+    const maxViewport =
+      document.documentElement.scrollHeight || document.body.scrollHeight;
+
+    if (currentPosition > maxViewport) {
+      if (this.newsService.isPageLoading) return;
+
+      this.newsService.getNews().subscribe((news) => this.posts.push(...news));
+    }
   }
 }
