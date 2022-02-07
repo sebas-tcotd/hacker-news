@@ -3,11 +3,10 @@ import {
   Component,
   ElementRef,
   EventEmitter,
-  OnInit,
   Output,
   ViewChild,
 } from '@angular/core';
-import { first, fromEvent, map, Subscription, tap } from 'rxjs';
+import { first, fromEvent, map, tap } from 'rxjs';
 import { FilterService } from 'src/app/services/filter.service';
 
 @Component({
@@ -15,7 +14,7 @@ import { FilterService } from 'src/app/services/filter.service';
   templateUrl: './dropdown.component.html',
   styleUrls: ['./dropdown.component.css'],
 })
-export class DropdownComponent implements OnInit, AfterViewInit {
+export class DropdownComponent implements AfterViewInit {
   @ViewChild('categories') categories!: ElementRef;
   @ViewChild('options') optionsPanel!: ElementRef;
   @ViewChild('list', { static: true }) optionsList!: ElementRef;
@@ -23,7 +22,6 @@ export class DropdownComponent implements OnInit, AfterViewInit {
 
   constructor(private filterService: FilterService) {}
 
-  ngOnInit(): void {}
   ngAfterViewInit(): void {
     this.filterService.filter$
       .pipe(

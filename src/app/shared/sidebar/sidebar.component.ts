@@ -3,7 +3,6 @@ import {
   Component,
   ElementRef,
   EventEmitter,
-  OnInit,
   Output,
   ViewChild,
 } from '@angular/core';
@@ -15,13 +14,12 @@ import { FilterService } from 'src/app/services/filter.service';
   templateUrl: './sidebar.component.html',
   styleUrls: ['./sidebar.component.css'],
 })
-export class SidebarComponent implements OnInit, AfterViewInit {
+export class SidebarComponent implements AfterViewInit {
   @ViewChild('sidebarCheck') sidebarCheck!: ElementRef;
   @ViewChild('options') options!: ElementRef;
   @Output() frameworkWordEmitter = new EventEmitter<string>();
   constructor(private filterService: FilterService) {}
 
-  ngOnInit(): void {}
   ngAfterViewInit(): void {
     this.filterService.filter$
       .pipe(

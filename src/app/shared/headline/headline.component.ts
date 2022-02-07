@@ -1,4 +1,4 @@
-import { Component, ElementRef, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Post } from 'src/app/models/post.model';
 import { HeadlineService } from 'src/app/services/headline.service';
 
@@ -7,14 +7,12 @@ import { HeadlineService } from 'src/app/services/headline.service';
   templateUrl: './headline.component.html',
   styleUrls: ['./headline.component.css'],
 })
-export class HeadlineComponent implements OnInit {
+export class HeadlineComponent {
   @Input() post!: Post;
 
   constructor(private headlineService: HeadlineService) {}
 
-  ngOnInit(): void {}
-
-  goToPost(url: string, id: number) {
+  goToPost(url: string) {
     window.open(url, '_blank');
   }
 

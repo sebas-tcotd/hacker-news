@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { NewsService } from '../services/news.service';
 
 @Component({
@@ -6,10 +6,6 @@ import { NewsService } from '../services/news.service';
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css'],
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent {
   constructor(private newsService: NewsService) {}
-
-  ngOnInit(): void {}
-
-
 }
