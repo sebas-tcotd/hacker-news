@@ -20,6 +20,7 @@ export class AllComponent implements OnInit, OnDestroy {
       .pipe(
         tap((word) => {
           this.frameworkWord = word;
+          this.searchByFramework(word);
         })
       )
       .subscribe();
@@ -28,6 +29,7 @@ export class AllComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.searchSubscription.unsubscribe();
+    this.newsService.resetNewsPage();
   }
 
   searchByFramework(framework: string): void {
