@@ -10,7 +10,7 @@ export class HeadlineService {
   constructor() {}
 
   getSavedPosts() {
-    const posts = localStorage.getItem('saved-posts') as string;
+    const posts = localStorage.getItem('saved-posts') || '[]';
     return JSON.parse(posts);
   }
 
