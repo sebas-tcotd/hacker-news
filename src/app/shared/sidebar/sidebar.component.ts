@@ -49,7 +49,7 @@ export class SidebarComponent implements AfterViewInit {
     const option = document.getElementById(`sidebar-${filter}`);
     option?.classList.add('sidebar__item--is-active');
 
-    this.filterService.setFilter(filter);
+    this.filterService.saveFilter(filter);
 
     this.emitWord(filter);
   }

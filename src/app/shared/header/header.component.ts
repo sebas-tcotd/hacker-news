@@ -9,7 +9,7 @@ import { NewsService } from 'src/app/services/news.service';
 export class HeaderComponent {
   constructor(private newsService: NewsService) {}
 
-  searchByFramework(framework: string) {
+  public searchByFramework(framework: string): void {
     this.newsService.setSearch(framework);
   }
 }

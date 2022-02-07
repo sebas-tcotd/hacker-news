@@ -1,8 +1,8 @@
 import {
-  AfterViewInit,
   Component,
   ElementRef,
   EventEmitter,
+  OnInit,
   Output,
   ViewChild,
 } from '@angular/core';
@@ -14,21 +14,25 @@ import { FilterService } from 'src/app/services/filter.service';
   templateUrl: './dropdown.component.html',
   styleUrls: ['./dropdown.component.css'],
 })
-export class DropdownComponent implements AfterViewInit {
+export class DropdownComponent implements OnInit {
   @ViewChild('categories') categories!: ElementRef;
-  @ViewChild('options') optionsPanel!: ElementRef;
+  @ViewChild('options', { static: true }) optionsPanel!: ElementRef;
   @ViewChild('list', { static: true }) optionsList!: ElementRef;
   @Output() frameworkWordEmitter = new EventEmitter<string>();
 
   constructor(private filterService: FilterService) {}
 
-  ngAfterViewInit(): void {
-    this.filterService.filter$
-      .pipe(
-        tap((filter) => this.setFilter(filter, true)),
-        first()
-      )
-      .subscribe();
+  ngOnInit(): void {
+    setTimeout(
+      () =>
+        this.filterService.filter$
+          .pipe(
+            tap((filter) => this.setSelectedOption(filter, true)),
+            first()
+          )
+          .subscribe((filter) => this.setFilter(filter)),
+      500
+    );
   }
 
   emitWord(word: string) {
@@ -36,14 +40,25 @@ export class DropdownComponent implements AfterViewInit {
     this.categories.nativeElement.checked = false;
   }
 
-  setFilter(filter: string, isFromService: boolean = false) {
+  setFilter(filter: string) {
     // 1. se setea el visor con la opción
-    const panelContent = this.optionsPanel.nativeElement;
+    this.setSelectedOption(filter);
 
+    // 2. Se guarda en el localStorage
+    this.filterService.saveFilter(filter);
+
+    // 3. Se emite la palabra
+    this.emitWord(filter);
+  }
+
+  private setSelectedOption(filter: string, comesFromService: boolean = false) {
+    const panelContent = this.optionsPanel.nativeElement;
     const optionsList = this.optionsList.nativeElement as HTMLElement;
 
-    if (!isFromService) {
-      fromEvent<PointerEvent>(optionsList, 'click')
+    if (!filter) return;
+
+    if (!comesFromService) {
+      return fromEvent<PointerEvent>(optionsList, 'click')
         .pipe(
           map(
             ({ target }) =>
@@ -52,18 +67,10 @@ export class DropdownComponent implements AfterViewInit {
           first()
         )
         .subscribe((content) => (panelContent.innerHTML = content));
-    } else {
-      if (filter) {
-        const option = document.getElementById(filter);
-        panelContent.innerHTML = option?.innerHTML;
-      }
-      return;
     }
 
-    // 2. Se guarda en el localStorage
-    this.filterService.setFilter(filter);
-
-    // 3. Se emite la palabra
-    this.emitWord(filter);
+    const option = document.getElementById(filter);
+    panelContent.innerHTML = option?.innerHTML;
+    return;
   }
 }

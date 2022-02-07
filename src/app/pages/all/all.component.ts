@@ -9,9 +9,9 @@ import { NewsService } from 'src/app/services/news.service';
   styleUrls: ['./all.component.css'],
 })
 export class AllComponent implements OnInit, OnDestroy {
-  posts!: Post[];
-  frameworkWord: string = '';
-  searchSubscription!: Subscription;
+  public posts!: Post[];
+  public frameworkWord: string = '';
+  public searchSubscription!: Subscription;
 
   constructor(private newsService: NewsService) {}
 
@@ -32,7 +32,7 @@ export class AllComponent implements OnInit, OnDestroy {
     this.newsService.resetNewsPage();
   }
 
-  searchByFramework(framework: string): void {
+  public searchByFramework(framework: string): void {
     this.newsService.resetNewsPage();
     this.newsService
       .getNews(framework)
@@ -40,7 +40,7 @@ export class AllComponent implements OnInit, OnDestroy {
   }
 
   @HostListener('window: scroll')
-  onScroll() {
+  public onScroll(): void {
     const threshold = 1500;
     const currentPosition =
       (document.documentElement.scrollTop || document.body.scrollTop) +

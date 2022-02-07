@@ -6,13 +6,12 @@ import { BehaviorSubject } from 'rxjs';
 })
 export class FilterService {
   private _localFilter = localStorage.getItem('framework-filter') || '';
-
   private _filterSource = new BehaviorSubject<string>(this._localFilter);
   public filter$ = this._filterSource.asObservable();
 
   constructor() {}
 
-  setFilter(filter: string) {
+  saveFilter(filter: string): void {
     localStorage.setItem('framework-filter', filter);
     this._filterSource.next(filter);
   }

@@ -8,15 +8,15 @@ import { HeadlineService } from 'src/app/services/headline.service';
   styleUrls: ['./headline.component.css'],
 })
 export class HeadlineComponent {
-  @Input() post!: Post;
+  @Input() public post!: Post;
 
   constructor(private headlineService: HeadlineService) {}
 
-  goToPost(url: string) {
+  public goToPost(url: string): void {
     window.open(url, '_blank');
   }
 
-  toggleFavoriteStatus(post: Post) {
+  public toggleFavoriteStatus(post: Post): void {
     if (!post.is_favorite) {
       this.headlineService.saveAsFavorite(post);
     } else {
