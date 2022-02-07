@@ -38,7 +38,7 @@ export class NewsService {
     this.isPageLoading = true;
 
     const params = new HttpParams()
-      .set('query', `${framework}`)
+      .set('query', `${framework || localStorage.getItem('framework-filter')}`)
       .set('page', this.newsPage.toString());
 
     return this.http

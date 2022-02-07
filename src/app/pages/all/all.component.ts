@@ -20,10 +20,10 @@ export class AllComponent implements OnInit, OnDestroy {
       .pipe(
         tap((word) => {
           this.frameworkWord = word;
-          this.searchByFramework(word);
         })
       )
-      .subscribe();
+      .subscribe((word) => this.searchByFramework(word));
+
     this.newsService.getNews().subscribe((posts) => (this.posts = posts));
   }
 
@@ -33,6 +33,7 @@ export class AllComponent implements OnInit, OnDestroy {
   }
 
   searchByFramework(framework: string): void {
+    this.newsService.resetNewsPage();
     this.newsService
       .getNews(framework)
       .subscribe((posts) => (this.posts = posts));
