@@ -1,0 +1,43 @@
+<div class="container mx-auto">
+  <div class="categories">
+    <input
+      type="checkbox"
+      id="categories__checkbox"
+      class="categories__checkbox"
+      #categories
+    />
+    <label for="categories__checkbox">
+      <div class="categories__select-button">
+        <div class="categories__filter-state" #options>Select your news</div>
+        <span class="material-icons"> expand_more </span>
+      </div>
+    </label>
+
+    <ul class="categories__list" #list>
+      <li class="categories__options" id="angular" (click)="setFilter('angular')">
+        <img
+          src="../../assets/images/angular-logo.svg"
+          alt="Angular logo"
+          class="categories__option-img"
+        />
+        <p>Angular</p>
+      </li>
+      <li class="categories__options" id="reactjs" (click)="setFilter('reactjs')">
+        <img
+          src="../../assets/images/react-logo.svg"
+          alt="React logo"
+          class="categories__option-img"
+        />
+        <p>React</p>
+      </li>
+      <li class="categories__options" id="vuejs" (click)="setFilter('vuejs')">
+        <img
+          src="../../assets/images/vue-logo.svg"
+          alt="VueJS logo"
+          class="categories__option-img"
+        />
+        <p>VueJS</p>
+      </li>
+    </ul>
+  </div>
+</div>

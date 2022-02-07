@@ -1,0 +1,27 @@
+<div class="headline" [id]="post.story_id">
+  <div class="headline__info" (click)="goToPost(post.story_url, post.story_id)">
+    <div class="headline__metadata">
+      <span class="material-icons headline__time-icon"> schedule </span>
+      <div class="headline__about">
+        <span class="headline__time-ago"
+          >{{ post.created_at | timeAgo }} &nbsp;</span
+        >
+
+        <span class="headline__author">by {{ post.author }}</span>
+      </div>
+    </div>
+
+    <h3 class="headline__title">
+      {{ post.story_title }}
+    </h3>
+  </div>
+
+  <button class="headline__favorite" (click)="toggleFavoriteStatus(post)">
+    <span class="material-icons" *ngIf="!post.is_favorite; else favorite">
+      favorite_border
+    </span>
+    <ng-template #favorite>
+      <span class="material-icons"> favorite </span>
+    </ng-template>
+  </button>
+</div>

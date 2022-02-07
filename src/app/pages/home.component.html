@@ -1,0 +1,19 @@
+<div class="tabs">
+  <button
+    class="tabs__button tabs__all-option"
+    routerLink="/"
+    routerLinkActive="tabs__button--is-active"
+    [routerLinkActiveOptions]="{ exact: true }"
+  >
+    All
+  </button>
+  <button
+    class="tabs__button tabs__favs-option"
+    routerLink="/favs"
+    routerLinkActive="tabs__button--is-active"
+  >
+    My faves
+  </button>
+</div>
+
+<router-outlet></router-outlet>

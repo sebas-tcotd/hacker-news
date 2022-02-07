@@ -1,0 +1,17 @@
+:root {
+  /* Typography scale */
+  --fs-base: 16px;
+
+  --fs-8: calc(8 / var(--fs-base) rem);
+  --fs-11: calc(11 / var(--fs-base) rem);
+  --fs-14: calc(14 / var(--fs-base) rem);
+  --fs-16: calc(16 / var(--fs-base) rem);
+  --fs-28: 28 / var(--fs-base);
+
+  /* Typography applications */
+  --fs-logo: calc(var(--fs-28));
+  --fs-tab: var(--fs-16);
+  --fs-dropdown: var(--fs-14);
+  --fs-title: var(--fs-16);
+  --fs-meta: var(--fs-11);
+}
