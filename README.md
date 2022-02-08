@@ -18,4 +18,4 @@ Hacker news is a web application where you can see all the news about your favor
 
 ## Documentation
 
-You can see the fron-end technical documentation [clicking here](#).
+You can see the fron-end technical documentation [clicking here](https://sebas-tcotd.github.io/hacker-news/).
