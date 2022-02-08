@@ -1,15 +1,9 @@
-import { Component, OnInit } from '@angular/core';
-import { NewsService } from '../services/news.service';
+import { Component } from '@angular/core';
 
+/** Component that contains the local routing in the main page. */
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css'],
 })
-export class HomeComponent implements OnInit {
-  constructor(private newsService: NewsService) {}
-
-  ngOnInit(): void {}
-
-
-}
+export class HomeComponent {}
