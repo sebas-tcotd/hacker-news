@@ -2,6 +2,11 @@
 // `ng build` replaces `environment.ts` with `environment.prod.ts`.
 // The list of file replacements can be found in `angular.json`.
 
+/**
+ * Environment variables that the application uses to function correctly.
+ *
+ * These variables are recognized at the development level.
+ */
 export const environment = {
   production: false,
   newsURLBase: 'https://hn.algolia.com/api/v1',

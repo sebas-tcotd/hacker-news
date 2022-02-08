@@ -1,11 +1,9 @@
 import { Component } from '@angular/core';
-import { NewsService } from '../services/news.service';
 
+/** Component that contains the local routing in the main page. */
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css'],
 })
-export class HomeComponent {
-  constructor(private newsService: NewsService) {}
-}
+export class HomeComponent {}

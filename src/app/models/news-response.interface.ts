@@ -1,54 +1,22 @@
+/** Response interface for the Hacker News endpoint. */
 export interface NewsResponse {
+  /** List of news */
   hits: News[];
-  nbHits: number;
-  page: number;
-  nbPages: number;
-  hitsPerPage: number;
-  exhaustiveNbHits: boolean;
-  exhaustiveTypo: boolean;
-  query: string;
-  params: string;
-  processingTimeMS: number;
 }
 
 export interface News {
+  /** Date of creation of the news */
   created_at: Date;
-  title: null;
-  url: null;
+
+  /** Author of the news */
   author: string;
-  points: null;
-  story_text: null;
-  comment_text: string;
-  num_comments: null;
-  story_id: number;
+
+  /** Title of the news */
   story_title: string;
+
+  /** URL of the news */
   story_url: null | string;
-  parent_id: number;
+
+  /** ID of the news */
   created_at_i: number;
-  _tags: string[];
-  objectID: string;
-  _highlightResult: HighlightResult;
-}
-
-export interface HighlightResult {
-  author: Author;
-  comment_text: Author;
-  story_title: Author;
-  story_url?: Author;
-}
-
-export interface Author {
-  value: string;
-  matchLevel: MatchLevel;
-  matchedWords: MatchedWord[];
-  fullyHighlighted?: boolean;
-}
-
-export enum MatchLevel {
-  Full = 'full',
-  None = 'none',
-}
-
-export enum MatchedWord {
-  Angular = 'angular',
 }
