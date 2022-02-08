@@ -1,5 +1,8 @@
 <app-dropdown (frameworkWordEmitter)="searchByFramework($event)"></app-dropdown>
 
 <main class="container main mx-auto">
-  <app-headline *ngFor="let post of posts" [post]="post"></app-headline>
+  <app-headline
+    *ngFor="let headline of headlines"
+    [headline]="headline"
+  ></app-headline>
 </main>

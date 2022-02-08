@@ -1,31 +1,39 @@
 import { Injectable } from '@angular/core';
-import { Post } from '../models/post.model';
+import { Headline } from '../models/post.model';
 
+/** Service that provides functionalities for headlines. */
 @Injectable({
   providedIn: 'root',
 })
 export class HeadlineService {
-  private _savedPosts: Post[] = [];
+  /** Headlines saved as favorites. */
+  private _savedHeadlines: Headline[] = [];
 
-  constructor() {}
-
-  public saveAsFavorite(post: Post): void {
-    const posts: Post[] = this.getSavedPosts();
+  /**
+   * Saves the headline as a favorite.
+   * @param headline The headline to be saved as favorite.
+   */
+  public saveAsFavorite(headline: Headline): void {
+    const posts: Headline[] = this.getSavedPosts();
 
     const isPostAlreadySaved: boolean = posts.some(
-      (savedPost) => savedPost.story_id === post.story_id
+      (savedPost) => savedPost.story_id === headline.story_id
     );
 
     if (isPostAlreadySaved) return;
 
-    post.is_favorite = true;
+    headline.is_favorite = true;
 
-    this._savedPosts = [...posts, post];
-    localStorage.setItem('saved-posts', JSON.stringify(this._savedPosts));
+    this._savedHeadlines = [...posts, headline];
+    localStorage.setItem('saved-posts', JSON.stringify(this._savedHeadlines));
   }
 
-  public removeFavorite(post: Post): void {
-    const posts: Post[] = this.getSavedPosts();
+  /**
+   * Removes a headline from favorites.
+   * @param post The headline to be removed.
+   */
+  public removeFavorite(post: Headline): void {
+    const posts: Headline[] = this.getSavedPosts();
 
     const isThePostFavorite = posts.find(
       (savedPost) => savedPost.story_id === post.story_id
@@ -42,7 +50,11 @@ export class HeadlineService {
     post.is_favorite = false;
   }
 
-  public getSavedPosts(): Post[] {
+  /**
+   * Obtains the headline stored in LocalStorage.
+   * @returns The list of headlines stored in LocalStorage.
+   */
+  public getSavedPosts(): Headline[] {
     const posts = localStorage.getItem('saved-posts') || '[]';
     return JSON.parse(posts);
   }

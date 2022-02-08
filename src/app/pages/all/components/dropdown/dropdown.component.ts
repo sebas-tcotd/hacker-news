@@ -6,22 +6,31 @@ import {
   Output,
   ViewChild,
 } from '@angular/core';
-import { first, fromEvent, map, tap } from 'rxjs';
+import { first, fromEvent, map, Subscription, tap } from 'rxjs';
 import { FilterService } from 'src/app/services/filter.service';
 
+/** Component that shows the framework filter dropdown. */
 @Component({
   selector: 'app-dropdown',
   templateUrl: './dropdown.component.html',
   styleUrls: ['./dropdown.component.css'],
 })
 export class DropdownComponent implements OnInit {
+  /** Property referencing the entire dropdown */
   @ViewChild('categories') categories!: ElementRef;
+
+  /** Property referencing the dropdown selector */
   @ViewChild('options', { static: true }) optionsPanel!: ElementRef;
+
+  /** Property referencing the dropdown list */
   @ViewChild('list', { static: true }) optionsList!: ElementRef;
+
+  /** Emitter issuing the framework word for the parent component */
   @Output() frameworkWordEmitter = new EventEmitter<string>();
 
   constructor(private filterService: FilterService) {}
 
+  /** @ignore */
   ngOnInit(): void {
     setTimeout(
       () =>
@@ -35,23 +44,37 @@ export class DropdownComponent implements OnInit {
     );
   }
 
-  emitWord(word: string) {
+  /**
+   * Emits the word to the parent component.
+   * @param word The framework word.
+   */
+  emitWord(word: string): void {
     this.frameworkWordEmitter.emit(word);
     this.categories.nativeElement.checked = false;
   }
 
-  setFilter(filter: string) {
-    // 1. se setea el visor con la opción
+  /**
+   * Sets the filter persistently.
+   * @param filter The framework word for being filtered.
+   */
+  setFilter(filter: string): void {
     this.setSelectedOption(filter);
 
-    // 2. Se guarda en el localStorage
     this.filterService.saveFilter(filter);
 
-    // 3. Se emite la palabra
     this.emitWord(filter);
   }
 
-  private setSelectedOption(filter: string, comesFromService: boolean = false) {
+  /**
+   * Sets the option dropdown by the filter.
+   * @param filter The framework word for being filtered.
+   * @param comesFromService Parameter if determines the method in called within the service subscription.
+   * @returns A subscription for the click event if it's called from the service.
+   */
+  private setSelectedOption(
+    filter: string,
+    comesFromService: boolean = false
+  ): Subscription | undefined {
     const panelContent = this.optionsPanel.nativeElement;
     const optionsList = this.optionsList.nativeElement as HTMLElement;
 

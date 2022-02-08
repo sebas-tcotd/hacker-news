@@ -1,9 +1,11 @@
 import { Pipe, PipeTransform } from '@angular/core';
 
+/** Pipe that transforms the raw date into a more human-readable content. */
 @Pipe({
   name: 'timeAgo',
 })
 export class TimeAgoPipe implements PipeTransform {
+  /** @ignore */
   transform(value: string) {
     if (!value) return 'A long time ago';
 
@@ -13,7 +15,14 @@ export class TimeAgoPipe implements PipeTransform {
     else if (time < 60) return 'A moment ago';
 
     const timeDividers = [60, 60, 24, 30, 12];
-    const timeLapse = [' second', ' minute', ' hour', ' day', ' month', ' year'];
+    const timeLapse = [
+      ' second',
+      ' minute',
+      ' hour',
+      ' day',
+      ' month',
+      ' year',
+    ];
 
     let i;
     for (i = 0; Math.floor(time / timeDividers[i]) > 0; i++) {
